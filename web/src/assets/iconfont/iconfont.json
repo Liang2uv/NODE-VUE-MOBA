@@ -1,0 +1,51 @@
+{
+  "id": "1529721",
+  "name": "NODE-VUE-MOBA",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "526001",
+      "name": "返回",
+      "font_class": "fanhui",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "1196941",
+      "name": "menu",
+      "font_class": "menu",
+      "unicode": "e647",
+      "unicode_decimal": 58951
+    },
+    {
+      "icon_id": "8620172",
+      "name": "video",
+      "font_class": "video",
+      "unicode": "e7b1",
+      "unicode_decimal": 59313
+    },
+    {
+      "icon_id": "9519555",
+      "name": "Book",
+      "font_class": "Book",
+      "unicode": "e830",
+      "unicode_decimal": 59440
+    },
+    {
+      "icon_id": "9626865",
+      "name": "更多",
+      "font_class": "gengduo",
+      "unicode": "e86d",
+      "unicode_decimal": 59501
+    },
+    {
+      "icon_id": "11208508",
+      "name": "23-superhero",
+      "font_class": "-superhero",
+      "unicode": "e69d",
+      "unicode_decimal": 59037
+    }
+  ]
+}

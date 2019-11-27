@@ -105,15 +105,27 @@
             <el-form-item label="团战思路">
               <el-input type="textarea" v-model="model.teamTips" />
             </el-form-item>
-            <el-form-item label="图标">
+            <el-form-item label="头像">
               <el-upload
                 class="avatar-uploader"
                 :action="uploadUrl"
                 :show-file-list="false"
                 :headers="getAuthHeaders()"
-                :on-success="afterUpload"
+                :on-success="res => $set(model, 'avatar',res.url)"
               >
                 <img v-if="model.avatar" :src="model.avatar" class="avatar" />
+                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+              </el-upload>
+            </el-form-item>
+            <el-form-item label="banner">
+              <el-upload
+                class="avatar-uploader"
+                :action="uploadUrl"
+                :show-file-list="false"
+                :headers="getAuthHeaders()"
+                :on-success="res => $set(model, 'banner',res.url)"
+              >
+                <img v-if="model.banner" :src="model.banner" class="avatar" />
                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
               </el-upload>
             </el-form-item>
@@ -133,6 +145,12 @@
                 <el-form-item label="提示">
                   <el-input type="textarea" v-model="item.tips" />
                 </el-form-item>
+                <el-form-item label="冷却值">
+                  <el-input v-model="item.delay" />
+                </el-form-item>
+                <el-form-item label="消耗">
+                  <el-input v-model="item.cost" />
+                </el-form-item>
                 <el-form-item label="图标">
                   <el-upload
                     class="avatar-uploader"
@@ -147,6 +165,31 @@
                 </el-form-item>
                 <el-form-item>
                   <el-button type="danger" @click="model.skills.splice(index, 1)">删除</el-button>
+                </el-form-item>
+              </el-col>
+            </el-row>
+          </el-tab-pane>
+          <el-tab-pane label="最佳搭档" name="partners">
+            <el-button size="small" @click="model.partners.push({})">
+              <i class="el-icon-plus"></i>添加英雄
+            </el-button>
+            <el-row type="flex" style="flex-wrap: wrap;">
+              <el-col :md="12" v-for="(item,index) in model.partners" :key="index">
+                <el-form-item>
+                  <el-select filterable v-model="item.hero">
+                    <el-option
+                      v-for="hero in tableData"
+                      :key="hero._id"
+                      :value="hero._id"
+                      :label="hero.name"
+                    ></el-option>
+                  </el-select>
+                </el-form-item>
+                <el-form-item label="描述">
+                  <el-input type="textarea" v-model="item.description" />
+                </el-form-item>
+                <el-form-item>
+                  <el-button type="danger" @click="model.partners.splice(index, 1)">删除</el-button>
                 </el-form-item>
               </el-col>
             </el-row>
@@ -168,7 +211,7 @@ export default {
       tableData: [],
       categories: [],
       items: [],
-      model: { scores: {}, skills: [] },
+      model: { scores: {}, skills: [], partners: [] },
       dialogVisible: false
     };
   },
@@ -202,7 +245,7 @@ export default {
     },
     // 新增
     toAdd() {
-      this.model = { scores: {}, skills: [] };
+      this.model = { scores: {}, skills: [], partners: [] };
       this.dialogVisible = true;
     },
     // 保存更改
@@ -228,10 +271,6 @@ export default {
     // 获取单个
     async getOne(id) {
       return await this.$http.get(`rest/heros/${id}`);
-    },
-    // 上传完成之后
-    afterUpload(res) {
-      this.$set(this.model, "avatar", res.url);
     },
     // 获取类型下拉列表
     async fetchCategories() {
@@ -273,14 +312,16 @@ export default {
 .avatar-uploader-icon {
   font-size: 28px;
   color: #8c939d;
-  width: 5rem;
-  height: 5rem;
+  max-width: 10rem;
+  /* width: 5rem; */
+  /* height: 5rem; */
   line-height: 5rem;
   text-align: center;
 }
 .avatar {
-  width: 5rem;
-  height: 5rem;
+  max-width: 10rem;
+  /* width: 5rem; */
+  /* height: 5rem; */
   display: block;
 }
 </style>

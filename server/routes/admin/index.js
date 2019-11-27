@@ -43,7 +43,7 @@ module.exports = app => {
     if (req.Model.modelName === 'Category') {
       queryOptions.populate = 'parent';
     }
-    const models = await req.Model.find().setOptions(queryOptions).limit(10);
+    const models = await req.Model.find().setOptions(queryOptions).limit(100);
     res.send(models);
   });
   // 获取单个

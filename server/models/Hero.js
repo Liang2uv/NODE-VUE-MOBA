@@ -7,6 +7,9 @@ const schema = new mongoose.Schema({
   avatar: {
     type: String
   },
+  banner: {
+    type: String
+  },
   title: {
     type: String
   },
@@ -25,7 +28,13 @@ const schema = new mongoose.Schema({
       icon: { type: String },
       name: { type: String },
       description: { type: String },
-      tips: { type: String }
+      tips: { type: String },
+      delay: {
+        type: String
+      },
+      cost: {
+        type: String
+      },
     }
   ],
   items1: [
@@ -51,5 +60,5 @@ const schema = new mongoose.Schema({
   ]
 });
 
-module.exports = mongoose.model('Hero', schema)
+module.exports = mongoose.model('Hero', schema, 'heroes')
 
