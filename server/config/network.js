@@ -1,4 +1,4 @@
 module.exports = {
-  baseURL: 'http://localhost:3000/',
+  baseURL: 'http://106.54.2.108:3000/',
   SECRECT: 'liang2uv10086'
 }
