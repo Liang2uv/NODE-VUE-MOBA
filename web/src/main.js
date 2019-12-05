@@ -4,7 +4,7 @@ import router from './router'
 import './assets/scss/style.scss'
 import vueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
-import http from '../http'
+import http from './http'
 
 Vue.use(vueAwesomeSwiper)
 
