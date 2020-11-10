@@ -1,4 +1,4 @@
 module.exports = {
-  baseURL: 'http://106.54.2.108:3000/',
+  baseURL: 'https://moba.liangbb.top/',
   SECRECT: 'liang2uv10086'
 }
